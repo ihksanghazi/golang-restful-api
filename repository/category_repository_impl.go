@@ -48,7 +48,7 @@ func (c *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, categ
 		helper.PanicIfError(err)
 		return category, nil
 	}else{
-		return category, errors.New("Category Is Not Found")
+		return category, errors.New("category is not found")
 	}
 }
 func (c *CategoryRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.Category {
