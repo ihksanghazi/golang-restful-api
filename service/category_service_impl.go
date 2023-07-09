@@ -11,10 +11,19 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
+
 type CategoryServiceImpl struct {
 	CategoryRepository repository.CategoryRepository
 	DB *sql.DB
 	Validate *validator.Validate
+}
+
+func NewCategoryService(CategoryRepository repository.CategoryRepository, DB *sql.DB ,Validate *validator.Validate) CategoryService {
+	return &CategoryServiceImpl{
+		CategoryRepository: CategoryRepository,
+		DB: DB,
+		Validate: Validate,
+	}
 }
 
 func (service *CategoryServiceImpl) Create(ctx context.Context,request web.CategoryCreateRequest) web.CategoryResponse{
